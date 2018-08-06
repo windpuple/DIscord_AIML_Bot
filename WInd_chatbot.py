@@ -88,7 +88,7 @@ except Exception as e:
     client.close()
 
 try:
-    client.run('NDcxOTkzODk0MjEzNzc5NDY3.Djs_SQ.b1RtjEmBzQQWX14tjzGwPN0C0vs')
+    client.run('')
   
 
 except Exception as e:
