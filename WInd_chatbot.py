@@ -113,7 +113,7 @@ except Exception as e:
     client.close()
 
 try:
-    client.run('NDcxOTkzODk0MjEzNzc5NDY3.DkvvQg.6WYZZqTVoE9t_WTcr8i1o7W79Ao')
+    client.run('')
   
 
 except Exception as e:
