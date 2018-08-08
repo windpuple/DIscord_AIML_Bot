@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<aiml version="1.0">
+<aiml version="2.0">
 <!-- -->
 <!-- Free software (c) 2012 ALICE A.I. Foundation. -->
 <!-- This program is open source code released under -->
@@ -11,7 +11,7 @@
 <!-- -->
 
     <category>
-      <pattern>나의 이름은 *</pattern>
+      <pattern>나의 이름 은 * 야</pattern>
       <template>
             <random>
             <li>흥미로운데요. 당신의 이름은 <set name="user_name"><star/></set> 군요!</li>
@@ -22,29 +22,38 @@
     </category>  
 
     <category>
-      <pattern>나의 이름은 머야</pattern>
+      <pattern>내 이름 은 * 야</pattern>
+      <template>
+            <srai>
+            나의 이름 은 <star/> 야
+            </srai>       
+      </template>  
+    </category>  
+
+    <category>
+      <pattern>나의 이름 은 머야</pattern>
       <template> 
         <random>
-        <li>당신의 이름은 <get name="user_name"/> 입니다.</li>
+        <li>당신의 이름 은 <get name="user_name"/> 입니다.</li>
         <li>아마도  <get name="user_name"/> 일걸요.</li>
         </random>     
       </template>  
     </category>
 
     <category>
-      <pattern>내 이름은 머야</pattern>
+      <pattern>내 이름 은 머야</pattern>
       <template> 
         <srai>
-        나의 이름은 머야
+        나의 이름 은 머야
         </srai>     
       </template>  
     </category> 
 
     <category>
-      <pattern>내 이름은 머니</pattern>
+      <pattern>내 이름 은 머니</pattern>
       <template> 
         <srai>
-        나의 이름은 머야
+        나의 이름 은 머야
         </srai>     
       </template>  
     </category> 

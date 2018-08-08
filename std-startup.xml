@@ -67,9 +67,12 @@
             <learn>./AIML_BOT/standard/that.aiml</learn>
             <learn>./AIML_BOT/standard/wallace.aiml</learn>
             <learn>./AIML_BOT/standard/xfind.aiml</learn>
-            <learn>./AIML_BOT/standard/update1.aiml</learn>
-            <learn>./AIML_BOT/standard/update_mccormick.aiml</learn> -->
             <learn>./AIML_BOT/standard/Wind_bot_update0.aiml</learn>
+            <learn>./AIML_BOT/standard/update_mccormick.aiml</learn>
+            <learn>./AIML_BOT/standard/update1.aiml</learn>
+            -->
+            <learn>./AIML_BOT/standard/Wind_bot_update0.aiml</learn>
+           
         </template>
     </category>
 </aiml>

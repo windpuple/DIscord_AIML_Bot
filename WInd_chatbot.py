@@ -62,8 +62,33 @@ async def on_message(message):
     channel = message.channel #channel이라는 변수에는 메시지를 받은 채널의 ID를 담습니다.
 
     if message.content.startswith('&'): #만약 해당 메시지가 '!커맨드' 로 시작하는 경우에는
-        k.setPredicate("user_name",id, id)
-        await client.send_message(channel, k.respond(message.content, id)) #봇은 해당 채널에 '커맨드' 라고 말합니다.
+        Client_sentence = str(message.content)
+        Client_sentence_Count = len(Client_sentence)-1
+        
+        josa = ["은 ","는 ","이 ","가 ","을 ","를 "]
+        for i in josa:
+            print(i)
+            Client_sentence = Client_sentence.replace(i,' '+i)
+            print(Client_sentence)
+
+#        finish_word = ["야"]
+#        for i in finish_word:
+#            if Client_sentence[Client_sentence_Count] == finish_word:
+#                 print(i)
+#                 Client_sentence = Client_sentence.replace(i,' '+i)
+#                 print(Client_sentence)
+#
+#미래에 종사로 끝나느 경우가 추가되면 사용.
+
+        finish_word = "야"
+        if finish_word == "야":
+             print(finish_word)
+             Client_sentence = Client_sentence.replace(finish_word,' '+finish_word)
+             print(Client_sentence)
+
+
+        #k.setPredicate("user_name","<@"+id+">", id) 말하는 사람의 ID를 읽어서 봇에게 저장 
+        await client.send_message(channel, k.respond(Client_sentence, id)) #봇은 해당 채널에 '커맨드' 라고 말합니다.
     elif message.content.startswith('!종료'):
             await client.send_message(message.channel, '종료합니다.')
             client.close()
@@ -88,7 +113,7 @@ except Exception as e:
     client.close()
 
 try:
-    client.run('')
+    client.run('NDcxOTkzODk0MjEzNzc5NDY3.DkvvQg.6WYZZqTVoE9t_WTcr8i1o7W79Ao')
   
 
 except Exception as e:
