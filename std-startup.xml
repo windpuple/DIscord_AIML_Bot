@@ -72,6 +72,7 @@
             <learn>./AIML_BOT/standard/update1.aiml</learn>
             -->
             <learn>./AIML_BOT/standard/Wind_bot_update0.aiml</learn>
+            <learn>./AIML_BOT/standard/Wind_bot_personality.aiml</learn>
            
         </template>
     </category>

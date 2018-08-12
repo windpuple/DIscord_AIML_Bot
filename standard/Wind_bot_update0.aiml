@@ -22,40 +22,14 @@
     </category>  
 
     <category>
-      <pattern>내 이름 은 * 야</pattern>
-      <template>
-            <srai>
-            나의 이름 은 <star/> 야
-            </srai>       
-      </template>  
-    </category>  
-
-    <category>
-      <pattern>나의 이름 은 머야</pattern>
+      <pattern>나의 이름 은 머 야</pattern>
       <template> 
         <random>
-        <li>당신의 이름 은 <get name="user_name"/> 입니다.</li>
+        <li>당신의 이름은 <get name="user_name"/> 입니다.</li>
         <li>아마도  <get name="user_name"/> 일걸요.</li>
         </random>     
       </template>  
     </category>
 
-    <category>
-      <pattern>내 이름 은 머야</pattern>
-      <template> 
-        <srai>
-        나의 이름 은 머야
-        </srai>     
-      </template>  
-    </category> 
-
-    <category>
-      <pattern>내 이름 은 머니</pattern>
-      <template> 
-        <srai>
-        나의 이름 은 머야
-        </srai>     
-      </template>  
-    </category> 
 
 </aiml>

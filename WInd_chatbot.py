@@ -64,8 +64,34 @@ async def on_message(message):
     if message.content.startswith('&'): #만약 해당 메시지가 '!커맨드' 로 시작하는 경우에는
         Client_sentence = str(message.content)
         Client_sentence_Count = len(Client_sentence)-1
-        
-        josa = ["은 ","는 ","이 ","가 ","을 ","를 "]
+
+        second_third_aspect = ["난","넌"," 난 "," 넌 ","내"," 내 "]
+        for i in second_third_aspect:
+            print(i)
+            
+            if i == "난" and Client_sentence[:len("&난")] == "&난":
+                Client_sentence = Client_sentence.replace(i,'&나 는')
+            
+            if i == "넌" and Client_sentence[:len("&넌")] == "&넌":
+                Client_sentence = Client_sentence.replace(i,'&너 는')
+            
+            if i == "내" and Client_sentence[:len("&내")] == "&내":
+                Client_sentence = Client_sentence.replace(i,'&나의')
+
+            if i == " 난 ":
+                Client_sentence = Client_sentence.replace(i,' 나 는 ')
+            
+            if i == " 넌 ":
+                Client_sentence = Client_sentence.replace(i,' 너 는 ')
+            
+            if i == " 내 ":
+                Client_sentence = Client_sentence.replace(i,' 나의 ')
+
+            print(Client_sentence)
+
+
+
+        josa = ["은 ","는 ","이 ","가 ","을 ","를 ","야 "]
         for i in josa:
             print(i)
             Client_sentence = Client_sentence.replace(i,' '+i)
@@ -80,14 +106,39 @@ async def on_message(message):
 #
 #미래에 종사로 끝나느 경우가 추가되면 사용.
 
-        finish_word = "야"
-        if finish_word == "야":
-             print(finish_word)
-             Client_sentence = Client_sentence.replace(finish_word,' '+finish_word)
-             print(Client_sentence)
+        finish_word = ["야","야?","?"]
+        for i in finish_word:
+            if i == "야?" and Client_sentence[len(Client_sentence)-len("야?"):] == "야?":
+                print(i)
+                Client_sentence = Client_sentence.replace(i,' 야?')
+                print(Client_sentence)
 
+            if i == "야" and Client_sentence[len(Client_sentence)-len("야"):] == "야":
+                print(i)
+                Client_sentence = Client_sentence.replace(i,' 야')
+                print(Client_sentence)
+
+            if i == "?" and Client_sentence[len(Client_sentence)-len("?"):] == "?":
+                print(i)
+                Client_sentence = Client_sentence.replace(i,'')
+                print(Client_sentence)
 
         #k.setPredicate("user_name","<@"+id+">", id) 말하는 사람의 ID를 읽어서 봇에게 저장 
+        k.setPredicate("bot_name","Wind",id)
+        k.setPredicate("bot_sex","남자",id)
+        k.setPredicate("bot_father","커뮤니티 리더 Wind",id)
+        k.setPredicate("bot_mother","똥냥이",id)
+        k.setPredicate("bot_hobby","살사댄스",id)
+        k.setPredicate("bot_language","한국어",id)
+
+        print(Client_sentence[0])
+
+        if Client_sentence[0] == "&":
+             Client_sentence = Client_sentence.replace("&","")
+             Client_sentence = Client_sentence.lstrip()
+            
+             print(Client_sentence)
+
         await client.send_message(channel, k.respond(Client_sentence, id)) #봇은 해당 채널에 '커맨드' 라고 말합니다.
     elif message.content.startswith('!종료'):
             await client.send_message(message.channel, '종료합니다.')

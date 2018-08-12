@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<!-- -->
+<!-- Free software (c) 2012 ALICE A.I. Foundation. -->
+<!-- This program is open source code released under -->
+<!-- the terms of the GNU General Public License  -->
+<!-- as published by the Free Software Foundation. -->
+<!-- Complies with AIML 1.0 Tag Set Specification -->
+<!-- as adopted by the ALICE A.I. Foundation. -->
+<!-- Last modified 5/4/2011 -->
+<!-- -->
+
+ <category>
+      <pattern>너의 이름 은 머 야</pattern>
+      <template> 
+        <random>
+        <li>저의 이름은 <get name="bot_name"/> 입니다.</li>
+        <li><get name="bot_name"/> 라고 부르세요.</li>
+        </random>     
+      </template>  
+  </category>
+
+<category>
+      <pattern>너의 아빠 는 누구 야</pattern>
+      <template> 
+        <random>
+        <li>제 아빠는 <get name="bot_father"/> 입니다.</li>
+        <li>절 만든 아빠는 <get name="bot_father"/>에요./></li>
+        </random>     
+      </template>  
+  </category>
+
+<category>
+      <pattern>너의 엄마 는 누구 야</pattern>
+      <template> 
+        <random>
+        <li>제 엄마는 <get name="bot_mother"/> 입니다.</li>
+        <li>절 만든 엄마는 <get name="bot_mother"/>에요./></li>
+        </random>     
+      </template>  
+  </category>
+
+
+<category>
+      <pattern>너 는 남자 야 여자 야</pattern>
+      <template> 
+        <random>
+        <li>저는 <get name="bot_sex"/> 입니다.</li>
+        <li>저는 <get name="bot_sex"/>에요./></li>
+        </random>     
+      </template>  
+  </category>
+
+<category>
+      <pattern>너 는 여자 야 남자 야</pattern>
+      <template> 
+        <random>
+        <li>저는 <get name="bot_sex"/> 입니다.</li>
+        <li>저는 <get name="bot_sex"/>에요./></li>
+        </random>     
+      </template>  
+  </category>
+
+<category>
+      <pattern>너의 성별 은 머 야</pattern>
+      <template> 
+        <random>
+        <li>저는 <get name="bot_sex"/> 입니다.</li>
+        <li>저는 <get name="bot_sex"/>에요./></li>
+        </random>     
+      </template>  
+  </category>
+
+<category>
+      <pattern>너의 취미 는 머 야</pattern>
+      <template> 
+         <get name="bot_hobby"/>에요.     
+      </template>  
+  </category>
+
+<category>
+      <pattern>너 는 어느나라 말 을 할 수 있어</pattern>
+      <template> 
+         <get name="bot_language"/> 만 해요.
+      </template>  
+  </category>
+
+
+</aiml>
