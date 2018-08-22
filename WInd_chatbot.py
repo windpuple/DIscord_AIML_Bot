@@ -19,15 +19,20 @@ k = aiml.Kernel()
 # otherwise loads the aiml from the xml files
 # and saves the brain dump.
 
-if os.path.exists(BRAIN_FILE):
-    print("Loading from brain file: " + BRAIN_FILE)
-    k.loadBrain(BRAIN_FILE)
-else:
-    print("Parsing aiml files")
-    k.bootstrap(learnFiles="./AIML_BOT/std-startup.xml", commands="load aiml b")
-    print("Saving brain file: " + BRAIN_FILE)
-    k.saveBrain(BRAIN_FILE)
+#if os.path.exists(BRAIN_FILE):
+#    print("Loading from brain file: " + BRAIN_FILE)
+#    k.loadBrain(BRAIN_FILE)
+#else:
+#    print("Parsing aiml files")
+#    k.bootstrap(learnFiles="./AIML_BOT/std-startup.xml", commands="load aiml b")
+#    print("Saving brain file: " + BRAIN_FILE)
+#    k.saveBrain(BRAIN_FILE)
 
+#imsi dont use brain file
+print("Parsing aiml files")
+k.bootstrap(learnFiles="./AIML_BOT/std-startup.xml", commands="load aiml b")
+print("Saving brain file: " + BRAIN_FILE)
+k.saveBrain(BRAIN_FILE)
 
 
 
@@ -42,13 +47,13 @@ async def on_ready():
 @client.event
 async def on_member_join(member):
     fmt = '{1.name} 에 오신것을 환영합니다., {0.mention} 님'
-    channel = member.server.get_channel("453230551554457611")
+    channel = member.server.get_channel("481774355085524994")
     await client.send_message(channel, fmt.format(member, member.server))
     await client.send_message(member, "방갑습니다. 커뮤니티에 오신것을 한영합니다.")
  
 @client.event
 async def on_member_remove(member):
-    channel = member.server.get_channel("453230551554457611")
+    channel = member.server.get_channel("481774355085524994")
     fmt = '{0.mention} 님이 서버에서 나가셨습니다.'
     await client.send_message(channel, fmt.format(member, member.server))
 
@@ -91,7 +96,7 @@ async def on_message(message):
 
 
 
-        josa = ["은 ","는 ","이 ","가 ","을 ","를 ","야 "]
+        josa = ["은 ","는 ","이 ","가 ","을 ","를 ","야 ","의 ","이야?"]
         for i in josa:
             print(i)
             Client_sentence = Client_sentence.replace(i,' '+i)
@@ -123,6 +128,8 @@ async def on_message(message):
                 Client_sentence = Client_sentence.replace(i,'')
                 print(Client_sentence)
 
+ 
+
         #k.setPredicate("user_name","<@"+id+">", id) 말하는 사람의 ID를 읽어서 봇에게 저장 
         k.setPredicate("bot_name","Wind",id)
         k.setPredicate("bot_sex","남자",id)
@@ -130,6 +137,7 @@ async def on_message(message):
         k.setPredicate("bot_mother","똥냥이",id)
         k.setPredicate("bot_hobby","살사댄스",id)
         k.setPredicate("bot_language","한국어",id)
+        k.setPredicate("bot_age","21",id)
 
         print(Client_sentence[0])
 
@@ -139,7 +147,14 @@ async def on_message(message):
             
              print(Client_sentence)
 
-        await client.send_message(channel, k.respond(Client_sentence, id)) #봇은 해당 채널에 '커맨드' 라고 말합니다.
+        if k.respond(Client_sentence, id):
+             await client.send_message(channel, k.respond(Client_sentence, id)) #봇은 해당 채널에 '커맨드' 라고 말합니다.
+        else:
+             file = open('./AIML_BOT/MisUnderstand_Sentence.txt', 'a')    # hello.txt 파일을 쓰기 모드(w)로 열기. 파일 객체 반환
+             file.write(Client_sentence+"\n")      # 파일에 문자열 저장
+             file.close()                     # 파일 객체 닫기
+             await client.send_message(channel, "아직은 이해 할수 없는 말입니다. 하지만 데이터베이스에 기록하여 지능의 성장에 쓰도록 하겠습니다.")
+        
     elif message.content.startswith('!종료'):
             await client.send_message(message.channel, '종료합니다.')
             client.close()
@@ -147,7 +162,7 @@ async def on_message(message):
 async def my_background_task():
         time = 0
         await client.wait_until_ready()
-        channel = discord.Object(id='453230551554457611')
+        channel = discord.Object(id='481774355085524994')
         
         while not client.is_closed:
             timemeassage = "Wind BOT이 활동한지 {}시간이 지났습니다.".format(time)

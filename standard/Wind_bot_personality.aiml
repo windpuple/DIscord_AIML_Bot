@@ -12,7 +12,7 @@
 <!-- -->
 
  <category>
-      <pattern>너의 이름 은 머 야</pattern>
+      <pattern>너 의 이름 은 머 야</pattern>
       <template> 
         <random>
         <li>저의 이름은 <get name="bot_name"/> 입니다.</li>
@@ -22,7 +22,7 @@
   </category>
 
 <category>
-      <pattern>너의 아빠 는 누구 야</pattern>
+      <pattern>너 의 아빠 는 누구 야</pattern>
       <template> 
         <random>
         <li>제 아빠는 <get name="bot_father"/> 입니다.</li>
@@ -32,7 +32,7 @@
   </category>
 
 <category>
-      <pattern>너의 엄마 는 누구 야</pattern>
+      <pattern>너 의 엄마 는 누구 야</pattern>
       <template> 
         <random>
         <li>제 엄마는 <get name="bot_mother"/> 입니다.</li>
@@ -63,17 +63,17 @@
   </category>
 
 <category>
-      <pattern>너의 성별 은 머 야</pattern>
+      <pattern>너 의 성별 은 머 야</pattern>
       <template> 
         <random>
         <li>저는 <get name="bot_sex"/> 입니다.</li>
-        <li>저는 <get name="bot_sex"/>에요./></li>
+        <li>저는 <get name="bot_sex"/>에요.</li>
         </random>     
       </template>  
   </category>
 
 <category>
-      <pattern>너의 취미 는 머 야</pattern>
+      <pattern>너 의 취미 는 머 야</pattern>
       <template> 
          <get name="bot_hobby"/>에요.     
       </template>  
@@ -86,5 +86,11 @@
       </template>  
   </category>
 
+<category>
+      <pattern>너 는 나이 가 몇 살 이 야</pattern>
+      <template> 
+         <get name="bot_age"/> 살 입니다. 하지만 아직 지능은 낮아요.
+      </template>  
+  </category>
 
 </aiml>

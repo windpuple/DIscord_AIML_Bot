@@ -11,7 +11,7 @@
 <!-- -->
 
     <category>
-      <pattern>나의 이름 은 * 야</pattern>
+      <pattern>나 의 이름 은 * 야</pattern>
       <template>
             <random>
             <li>흥미로운데요. 당신의 이름은 <set name="user_name"><star/></set> 군요!</li>
@@ -22,7 +22,7 @@
     </category>  
 
     <category>
-      <pattern>나의 이름 은 머 야</pattern>
+      <pattern>나 의 이름 은 머 야</pattern>
       <template> 
         <random>
         <li>당신의 이름은 <get name="user_name"/> 입니다.</li>
@@ -30,6 +30,28 @@
         </random>     
       </template>  
     </category>
+
+    <category>
+      <pattern>안녕</pattern>
+      <template> 
+        <random>
+        <li>방가워요.</li>
+        <li>안녕하세요.</li>
+        </random>     
+      </template>  
+    </category>
+
+<category><pattern>안녕하세요</pattern>
+<template>
+<srai>안녕</srai>
+</template>
+</category>
+
+<category><pattern>안녕 *</pattern>
+<template>
+<srai>안녕</srai>
+</template>
+</category>
 
 
 </aiml>
