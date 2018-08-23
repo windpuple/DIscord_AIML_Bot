@@ -219,6 +219,10 @@ async def on_message(message):
                             file.write("</aiml>\n")
                             file.close()
 
+                            print("Parsing aiml files")
+                            k.bootstrap(learnFiles="./AIML_BOT/std-startup.xml", commands="load aiml b")
+                            print("Saving brain file: " + BRAIN_FILE)
+                            k.saveBrain(BRAIN_FILE)
                     loop = loop + 1
                 
                 file.close()                     # 파일 객체 닫기
