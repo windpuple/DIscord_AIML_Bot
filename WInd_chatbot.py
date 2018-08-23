@@ -2,6 +2,7 @@
 import aiml
 import discord , asyncio , datetime , sys , os
 from discord.ext import commands
+import codecs
 
 client = discord.Client()
 
@@ -12,6 +13,10 @@ def main():
 BRAIN_FILE="./AIML_BOT/brain.dump"
 
 k = aiml.Kernel()
+
+Learn_flag = 0
+Sentence_Num = 0
+
 
 # To increase the startup speed of the bot it is
 # possible to save the parsed aiml files as a
@@ -60,6 +65,12 @@ async def on_member_remove(member):
 
 @client.event
 async def on_message(message):
+
+    global Learn_flag
+    global Sentence_Num
+    global target_Num
+    
+
     if message.author.bot: #만약 메시지를 보낸사람이 봇일 경우에는
         return None #동작하지 않고 무시합니다.
 
@@ -130,7 +141,7 @@ async def on_message(message):
 
  
 
-        #k.setPredicate("user_name","<@"+id+">", id) 말하는 사람의 ID를 읽어서 봇에게 저장 
+        k.setPredicate("user_name","<@"+id+">", id) # 말하는 사람의 ID를 읽어서 봇에게 저장 
         k.setPredicate("bot_name","Wind",id)
         k.setPredicate("bot_sex","남자",id)
         k.setPredicate("bot_father","커뮤니티 리더 Wind",id)
@@ -138,6 +149,7 @@ async def on_message(message):
         k.setPredicate("bot_hobby","살사댄스",id)
         k.setPredicate("bot_language","한국어",id)
         k.setPredicate("bot_age","21",id)
+        
 
         print(Client_sentence[0])
 
@@ -147,13 +159,77 @@ async def on_message(message):
             
              print(Client_sentence)
 
-        if k.respond(Client_sentence, id):
-             await client.send_message(channel, k.respond(Client_sentence, id)) #봇은 해당 채널에 '커맨드' 라고 말합니다.
-        else:
-             file = open('./AIML_BOT/MisUnderstand_Sentence.txt', 'a')    # hello.txt 파일을 쓰기 모드(w)로 열기. 파일 객체 반환
-             file.write(Client_sentence+"\n")      # 파일에 문자열 저장
-             file.close()                     # 파일 객체 닫기
-             await client.send_message(channel, "아직은 이해 할수 없는 말입니다. 하지만 데이터베이스에 기록하여 지능의 성장에 쓰도록 하겠습니다.")
+      
+
+        if(Learn_flag == 0):
+            if k.respond(Client_sentence, id):
+                await client.send_message(channel, k.respond(Client_sentence, id)) #봇은 해당 채널에 '커맨드' 라고 말합니다.
+            else:
+                file = codecs.open('./AIML_BOT/standard/MisUnderstand_Sentence.txt', 'a','utf-8')    # hello.txt 파일을 쓰기 모드(w)로 열기. 파일 객체 반환
+                file.write(str(Sentence_Num)+" "+k.getPredicate("user_name",id)+" "+Client_sentence+"\n")      # 파일에 문자열 저장
+                file.close()                     # 파일 객체 닫기
+                await client.send_message(channel, "아직은 이해 할수 없는 말입니다. 하지만 데이터베이스에 기록하여 지능의 성장에 쓰도록 하겠습니다.")
+                await client.send_message(channel, "그러면 제가 대답을 어떻게 해야 하는지 알려주세요.")
+
+                target_Num = Sentence_Num
+                Sentence_Num = Sentence_Num+1
+                Learn_flag = 1
+
+        elif(Learn_flag == 1):
+                file = codecs.open('./AIML_BOT/standard/MisUnderstand_Sentence.txt', 'r','utf-8')    # hello.txt 파일을 쓰기 모드(w)로 열기. 파일 객체 반환
+                loop = 0
+                for MisUnderstand_Sentence_line in file:
+
+                    #MisUnderstand_Sentence_line = row.readline()
+                
+                    print(MisUnderstand_Sentence_line)
+
+                    
+                    readline_split = MisUnderstand_Sentence_line.split()
+
+                        
+                    print("loop ",loop)
+                    print("Sentence_Num ",str(target_Num))
+                    print("readline_split0 ",readline_split[0])
+                        
+                    if readline_split[0] == str(target_Num):
+                            file = codecs.open(
+                                './AIML_BOT/standard/MisUnderstand_Answer_Sentence.aiml', 'r','utf-8')
+                            Answer_Sentence_line = file.read()
+                            print("aiml erase1 ",Answer_Sentence_line)
+                            Answer_Sentence_line = Answer_Sentence_line.replace('</aiml>', '')
+                            print("aiml erase2 ",Answer_Sentence_line)
+                            file.close()
+
+                            file = codecs.open(
+                                './AIML_BOT/standard/MisUnderstand_Answer_Sentence.aiml', 'w', 'utf-8')
+                            file.write(Answer_Sentence_line)
+                            file.close()
+
+                            file = codecs.open(
+                                './AIML_BOT/standard/MisUnderstand_Answer_Sentence.aiml', 'a', 'utf-8')
+                            file.write("\n<category>\n")      # 파일에 문자열 저장
+                            file.write("      <pattern>\n")
+                            file.write("            "+MisUnderstand_Sentence_line[24:])
+                            file.write("      </pattern>\n")
+                            file.write("            <template>\n")
+                            file.write("            "+Client_sentence+"\n")
+                            file.write("            </template>\n")
+                            file.write("</category>\n\n")
+                            file.write("</aiml>\n")
+                            file.close()
+
+                    loop = loop + 1
+                
+                file.close()                     # 파일 객체 닫기
+                await client.send_message(channel, "기억했어요. 대답을 알려주셔서 감사합니다.")
+                Learn_flag = 0
+                
+            
+
+
+
+
         
     elif message.content.startswith('!종료'):
             await client.send_message(message.channel, '종료합니다.')
@@ -167,7 +243,7 @@ async def my_background_task():
         while not client.is_closed:
             timemeassage = "Wind BOT이 활동한지 {}시간이 지났습니다.".format(time)
             await client.send_message(channel, timemeassage)
-            await asyncio.sleep(60*60*24) 
+            await asyncio.sleep(60*60) 
             time += 1
             
 try:

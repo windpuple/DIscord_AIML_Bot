@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+
+
+
+
+
+<category>
+      <pattern>
+            말 을 할줄 아니
+      </pattern>
+            <template>
+            응
+            </template>
+</category>
+
+</aiml>
