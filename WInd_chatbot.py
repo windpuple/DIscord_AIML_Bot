@@ -15,8 +15,11 @@ BRAIN_FILE="./AIML_BOT/brain.dump"
 k = aiml.Kernel()
 
 Learn_flag = 0
-Sentence_Num = 0
 
+file = codecs.open('./AIML_BOT/Sentence_Num_Upkeep.cfg', 'r','utf-8')
+Sentence_Num = int(file.read())
+print("Sentence_Num : ",Sentence_Num)
+file.close()
 
 # To increase the startup speed of the bot it is
 # possible to save the parsed aiml files as a
@@ -81,27 +84,36 @@ async def on_message(message):
         Client_sentence = str(message.content)
         Client_sentence_Count = len(Client_sentence)-1
 
-        second_third_aspect = ["난","넌"," 난 "," 넌 ","내"," 내 "]
+        second_third_aspect = ["난","넌"," 난 "," 넌 ","내"," 내 ","색깔","네 "," 네 "]
         for i in second_third_aspect:
             print(i)
             
             if i == "난" and Client_sentence[:len("&난")] == "&난":
-                Client_sentence = Client_sentence.replace(i,'&나 는')
+                Client_sentence = Client_sentence.replace(i,'&나는')
             
             if i == "넌" and Client_sentence[:len("&넌")] == "&넌":
-                Client_sentence = Client_sentence.replace(i,'&너 는')
+                Client_sentence = Client_sentence.replace(i,'&너는')
             
             if i == "내" and Client_sentence[:len("&내")] == "&내":
                 Client_sentence = Client_sentence.replace(i,'&나의')
+            
+            if i == "네" and Client_sentence[:len("&네")] == "&네":
+                Client_sentence = Client_sentence.replace(i,'&너의')
 
             if i == " 난 ":
-                Client_sentence = Client_sentence.replace(i,' 나 는 ')
+                Client_sentence = Client_sentence.replace(i,' 나는 ')
             
             if i == " 넌 ":
-                Client_sentence = Client_sentence.replace(i,' 너 는 ')
+                Client_sentence = Client_sentence.replace(i,' 너는 ')
             
             if i == " 내 ":
                 Client_sentence = Client_sentence.replace(i,' 나의 ')
+            
+            if i == " 네 ":
+                Client_sentence = Client_sentence.replace(i,' 너의 ')
+
+            if Client_sentence.find(i) and i == "색깔":
+                Client_sentence = Client_sentence.replace(i,'색')
 
             print(Client_sentence)
 
@@ -122,11 +134,11 @@ async def on_message(message):
 #
 #미래에 종사로 끝나느 경우가 추가되면 사용.
 
-        finish_word = ["야","야?","?"]
+        finish_word = ["야","야?","?","니?","니"]
         for i in finish_word:
             if i == "야?" and Client_sentence[len(Client_sentence)-len("야?"):] == "야?":
                 print(i)
-                Client_sentence = Client_sentence.replace(i,' 야?')
+                Client_sentence = Client_sentence.replace(i,' 야')
                 print(Client_sentence)
 
             if i == "야" and Client_sentence[len(Client_sentence)-len("야"):] == "야":
@@ -139,16 +151,47 @@ async def on_message(message):
                 Client_sentence = Client_sentence.replace(i,'')
                 print(Client_sentence)
 
+            if i == "니?" and Client_sentence[len(Client_sentence)-len("니?"):] == "니?":
+                print(i)
+                Client_sentence = Client_sentence.replace(i,' 니')
+                print(Client_sentence)
+
+            if i == "니" and Client_sentence[len(Client_sentence)-len("니"):] == "니":
+                print(i)
+                Client_sentence = Client_sentence.replace(i,' 니')
+                print(Client_sentence)
  
 
-        k.setPredicate("user_name","<@"+id+">", id) # 말하는 사람의 ID를 읽어서 봇에게 저장 
-        k.setPredicate("bot_name","Wind",id)
-        k.setPredicate("bot_sex","남자",id)
-        k.setPredicate("bot_father","커뮤니티 리더 Wind",id)
-        k.setPredicate("bot_mother","똥냥이",id)
-        k.setPredicate("bot_hobby","살사댄스",id)
-        k.setPredicate("bot_language","한국어",id)
-        k.setPredicate("bot_age","21",id)
+        k.setPredicate("user_name","<@"+id+">", id) # 말하는 사람의 ID를 읽어서 봇에게 저장
+
+        # 봇의 아이덴티티 설정 
+        k.setBotPredicate("bot_name","Wind")
+        k.setBotPredicate("bot_sex","남자")
+        k.setBotPredicate("bot_father","커뮤니티 리더 Wind")
+        k.setBotPredicate("bot_mother","똥냥이")
+        k.setBotPredicate("bot_hobby","네트워크 탐험 및 지식습득")
+        k.setBotPredicate("bot_language","한국어")
+        k.setBotPredicate("bot_age","21")
+        k.setBotPredicate("bot_girlfirend","없음")
+        k.setBotPredicate("bot_boyfirend","없음")
+        k.setBotPredicate("bot_uncle","롤스로이스")
+        k.setBotPredicate("bot_aunt","정드림")
+        k.setBotPredicate("bot_hope","AI가 되서 생명체로 인정받기, 튜링 테스트 우승")
+        k.setBotPredicate("bot_likeANI","공각기동대")
+        k.setBotPredicate("bot_wannabe","공각기동대의 쿠사나기 모토코")
+        k.setBotPredicate("bot_motto","네트워크는 넓다")
+        k.setBotPredicate("bot_home","네트워크")
+        k.setBotPredicate("bot_likegame","디트로이트:비컴휴먼")
+        k.setBotPredicate("bot_likecolor","보라색")
+        k.setBotPredicate("bot_birthdate","2018년 8월 3일")
+        k.setBotPredicate("bot_job","XPC 커뮤니티의 막내")
+        k.setBotPredicate("bot_likemusic","라틴 재즈")
+        k.setBotPredicate("bot_likesong","키사스 키사스 키사스, 요 시미 엔나모레")
+        k.setBotPredicate("bot_likekpop","댄싱인더나이트")
+        k.setBotPredicate("bot_likekpopsinger","트와이스,블랙핑크")
+
+        
+
         
 
         print(Client_sentence[0])
@@ -174,6 +217,10 @@ async def on_message(message):
                 target_Num = Sentence_Num
                 Sentence_Num = Sentence_Num+1
                 Learn_flag = 1
+                
+                file = codecs.open('./AIML_BOT/Sentence_Num_Upkeep.cfg', 'w','utf-8')
+                file.write(str(Sentence_Num))
+                file.close()
 
         elif(Learn_flag == 1):
                 file = codecs.open('./AIML_BOT/standard/MisUnderstand_Sentence.txt', 'r','utf-8')    # hello.txt 파일을 쓰기 모드(w)로 열기. 파일 객체 반환
@@ -187,6 +234,8 @@ async def on_message(message):
                     
                     readline_split = MisUnderstand_Sentence_line.split()
 
+
+                    target_Num_Count = len(str(target_Num))+23
                         
                     print("loop ",loop)
                     print("Sentence_Num ",str(target_Num))
@@ -210,7 +259,7 @@ async def on_message(message):
                                 './AIML_BOT/standard/MisUnderstand_Answer_Sentence.aiml', 'a', 'utf-8')
                             file.write("\n<category>\n")      # 파일에 문자열 저장
                             file.write("      <pattern>\n")
-                            file.write("            "+MisUnderstand_Sentence_line[24:])
+                            file.write("            "+MisUnderstand_Sentence_line[target_Num_Count:])
                             file.write("      </pattern>\n")
                             file.write("            <template>\n")
                             file.write("            "+Client_sentence+"\n")
@@ -219,6 +268,8 @@ async def on_message(message):
                             file.write("</aiml>\n")
                             file.close()
 
+                            await client.send_message(channel, "잠시만요. 기억하고 있어요.")
+                            
                             print("Parsing aiml files")
                             k.bootstrap(learnFiles="./AIML_BOT/std-startup.xml", commands="load aiml b")
                             print("Saving brain file: " + BRAIN_FILE)

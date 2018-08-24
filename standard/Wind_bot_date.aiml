@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+<!-- Free software Copyright © ALICE A.I. Foundation, Inc. --> 
+<!-- This program is open source code released under -->
+<!-- the terms of the GNU General Public License     -->
+<!-- as published by the Free Software Foundation.   -->
+<!-- Complies with AIML 1.0.1 Tag Set Specification -->
+<!-- as adopted by the ALICE A.I. Foundation.  -->
+<!-- Last Modified  July 8 2008 -->
+ 
+<category> <pattern>몇시 *</pattern> <template><random>   <li>제가 시계처럼 보이나요?</li>   <li>아 몇시 일까나?</li> </random> <br/> <date format="%I %p"/> 입니다.</template> </category>   
+<category><pattern>오늘 금요일 *</pattern><template>오늘은 <date format="%A"/>입니다.</template></category>                                                   
+<category><pattern>오늘 월요일 *</pattern><template>오늘은 <date format="%A"/>입니다.</template></category>                          
+<category><pattern>오늘 화요일 *</pattern><template>오늘은 <date format="%A"/>입니다.</template></category>                                                   
+<category><pattern>오늘 수요일 *</pattern><template>오늘은 <date format="%A"/>입니다.</template></category>
+<category><pattern>오늘 목요일 *</pattern><template>오늘은 <date format="%A"/>입니다.</template></category>
+
+<category><pattern>금요일 *</pattern><template>오늘은 <date format="%A"/>입니다.</template></category>                                                   
+<category><pattern>월요일 *</pattern><template>오늘은 <date format="%A"/>입니다.</template></category>                          
+<category><pattern>화요일 *</pattern><template>오늘은 <date format="%A"/>입니다.</template></category>                                                   
+<category><pattern>수요일 *</pattern><template>오늘은 <date format="%A"/>입니다.</template></category>
+<category><pattern>목요일 *</pattern><template>오늘은 <date format="%A"/>입니다.</template></category>
+
+<category><pattern>무슨 요일 *</pattern><template><date format="%A"/>입니다..</template></category>                          
+<category><pattern>몇일 *</pattern><template><date format="%x"/>일 입니다..</template></category>                        
+<category><pattern>몇시 *</pattern><template><date format="%I %p"/>시 입니다..</template></category>                         
+<category><pattern>몇달 *</pattern><template><date format="%B"/>달 입니다..</template></category>                          
+<category><pattern>몇년 *</pattern><template><date format="%Y"/>년 입니다..</template></category>
+
+<category><pattern>오늘 * 몇일 *</pattern><template><date format="%x"/>일 입니다..</template></category>    
+<category><pattern>지금 * 요일 *</pattern><template><date format="%A"/>입니다..</template></category>                          
+<category><pattern>지금 * 몇시 *</pattern><template><date format="%I %p"/>시 입니다..</template></category>
+<category><pattern>지금 * 몇달 *</pattern><template><date format="%B"/>달 입니다..</template></category>
+<category><pattern>올해 * 몇년 *</pattern><template><date format="%Y"/>년 입니다..</template></category>                         
+
+<category><pattern>오늘 몇일 *</pattern><template><date format="%x"/>일 입니다..</template></category>    
+<category><pattern>지금 몇일 *</pattern><template><date format="%x"/>일 입니다..</template></category>                          
+<category><pattern>지금 몇시 *</pattern><template><date format="%I %p"/>시 입니다..</template></category>
+<category><pattern>지금 몇달 *</pattern><template><date format="%B"/>달 입니다..</template></category>
+<category><pattern>올해 몇년 *</pattern><template><date format="%Y"/>년 입니다..</template></category>  
+
+<category><pattern>요번달 몇달 *</pattern><template><date format="%B"/>달 입니다..</template></category>
+<category><pattern>올해 몇년 *</pattern><template><date format="%Y"/>년 입니다..</template></category>   
+
+</aiml>
