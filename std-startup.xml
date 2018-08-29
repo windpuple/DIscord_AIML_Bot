@@ -76,6 +76,7 @@
             <learn>./AIML_BOT/standard/Wind_bot_date.aiml</learn>
             <learn>./AIML_BOT/standard/MisUnderstand_Answer_Sentence.aiml</learn>
            
+           
         </template>
     </category>
 </aiml>

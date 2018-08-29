@@ -151,7 +151,7 @@
       <template> 
         <random>
         <li>저는 <bot name="bot_sex"/> 입니다.</li>
-        <li>저는 <bot name="bot_sex"/>에요./></li>
+        <li>저는 <bot name="bot_sex"/>에요.</li>
         </random>     
       </template>  
 </category>
@@ -410,6 +410,13 @@
 
 <category>
       <pattern>너 는 무슨 애니 *</pattern>
+      <template> 
+        <bot name="bot_likeANI"/> 좋아해요
+      </template>  
+</category>
+
+<category>
+      <pattern>좋아하 는 애니 가  *</pattern>
       <template> 
         <bot name="bot_likeANI"/> 좋아해요
       </template>  
