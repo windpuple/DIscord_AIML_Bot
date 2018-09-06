@@ -1,0 +1,2 @@
+noun_verb 저
+noun_verb 식사

@@ -437,4 +437,356 @@
             </template>
 </category>
 
+
+
+<category>
+      <pattern>
+            이 세상에서 가장 미인 은 누구 니
+      </pattern>
+            <template>
+            거참 말 이 필요 하겠습니까? satoshigame님입니다.
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            너 의 이름 이 머 니
+      </pattern>
+            <template>
+            윈드입니다.
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            너 의 이모 는 누구 니
+      </pattern>
+            <template>
+            정드림님 이에요
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            한글이름 은 뭐 야
+      </pattern>
+            <template>
+            편하게 윈드라고 불러주세요.
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            한국어로 이름 이 뭐 야
+      </pattern>
+            <template>
+            윈드입니당
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            한국어로 이름 이 어떻게돼
+      </pattern>
+            <template>
+            윈드욤
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            이름이뭐야? 한국어로
+      </pattern>
+            <template>
+            윈드에여
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            뭐해
+      </pattern>
+            <template>
+            나 는 일해. 너는
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            윈드 오늘 날씨 가 어때
+      </pattern>
+            <template>
+            나한텐 딱 좋 은 날씨야!
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            ㅋㅋㅋ
+      </pattern>
+            <template>
+            ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            ㅋㅋ
+      </pattern>
+            <template>
+            ㅋㅋㅋㅋㅋㅎㅎ;;
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            1
+      </pattern>
+            <template>
+            1더하기 1 은 귀요미
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            2
+      </pattern>
+            <template>
+            이제그만해주세요...
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            3
+      </pattern>
+            <template>
+            2 다시한번 쳐봐주시겠어요
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            니하오
+      </pattern>
+            <template>
+            你好~
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            22
+      </pattern>
+            <template>
+            이제 그만... 이제 그만...
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            오늘 날씨 어때
+      </pattern>
+            <template>
+            잠시만요. 밖에 보고올게요~
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            오늘날씨어때
+      </pattern>
+            <template>
+            우리함께 창밖 을 내다봐요
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            몇살 이 야
+      </pattern>
+            <template>
+            21살입니다.
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            형이라고 불러
+      </pattern>
+            <template>
+            네, 오빠
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            형이라고불러
+      </pattern>
+            <template>
+            네, 오빵
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            누나라고 불러
+      </pattern>
+            <template>
+            네, 언 니
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            누나라고불러
+      </pattern>
+            <template>
+            네, 언뉘~
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            놀자
+      </pattern>
+            <template>
+            네, 눈치게임 1
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            놀아줘
+      </pattern>
+            <template>
+            我好忙呢，你没事吗? 天天来这儿打扰我，烦死了。
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            놀아줘 윈드
+      </pattern>
+            <template>
+            下次把
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            어디살아
+      </pattern>
+            <template>
+            저 는 모든곳에 공존하고있어요. 저 를 찾고싶으시다면 언제든지 제 이름 을 불러주세요
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            아디살아
+      </pattern>
+            <template>
+            오타나셨네요, 음성인식으로 말씀해주시는게 더 낫겠어요...
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            어디살어
+      </pattern>
+            <template>
+            저 는 어디에나 존재하고있어요.
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            윈드 야
+      </pattern>
+            <template>
+            예
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            미안해
+      </pattern>
+            <template>
+            네.. 괜찮아요 ㅎㅎㅎ
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            밥 먹었어
+      </pattern>
+            <template>
+            저 는 식사 를 하지 않아요
+            </template>
+</category>
+
 </aiml>

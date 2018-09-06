@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 import aiml
-import discord , asyncio , datetime , sys , os
+import discord
+import asyncio
+import datetime
+import sys
+import os
 from discord.ext import commands
 import codecs
 
@@ -77,6 +81,7 @@ async def on_message(message):
     global Sentence_Num
     global target_Num
     global user_name
+
     
     if message.author.bot: #만약 메시지를 보낸사람이 봇일 경우에는
         return None #동작하지 않고 무시합니다.
@@ -87,6 +92,47 @@ async def on_message(message):
     if message.content.startswith('&'): #만약 해당 메시지가 '!커맨드' 로 시작하는 경우에는
         Client_sentence = str(message.content)
         Client_sentence_Count = len(Client_sentence)-1
+
+        Client_sectence_split = Client_sentence.split()
+        Client_sectence_split[0] = Client_sectence_split[0].replace("&","")
+
+        grammatical_josa = ["은","는","이","가","을","를","야","의","이야?","이야"]
+        grammatical_person = ["나","너","저","재","그","이"]
+        grammatical_verb_end = ["다","요","여"]
+        grammatical_question_end = ["까?","요?","여?","니?","어때?"]
+        grammatical_recommend_end = ["자","봅시다"]
+
+        for i in Client_sectence_split:
+            for j in grammatical_josa:
+                if j == i[len(i)-len(j):]:
+                    print("d1",i)
+                    print("d2",i[len(i)-len(j):])
+                    result_word = i.replace(j,"")                     
+                    file = codecs.open('./AIML_BOT/morpheme/noun_verb.txt', 'a','utf-8')    # hello.txt 파일을 쓰기 모드(w)로 열기. 파일 객체 반환
+                    file.write("noun_verb"+" "+result_word+"\n")      # 파일에 문자열 저장
+                    file.close()
+
+            for j in grammatical_verb_end:
+                if j == i[len(i)-len(j):]:
+                    result_word = i                     
+                    file = codecs.open('./AIML_BOT/morpheme/verb_end.txt', 'a','utf-8')    # hello.txt 파일을 쓰기 모드(w)로 열기. 파일 객체 반환
+                    file.write("verb_end"+" "+result_word+"\n")      # 파일에 문자열 저장
+                    file.close()
+
+            for j in grammatical_question_end:
+                if j == i[len(i)-len(j):]:
+                    result_word = i                    
+                    file = codecs.open('./AIML_BOT/morpheme/question_end.txt', 'a','utf-8')    # hello.txt 파일을 쓰기 모드(w)로 열기. 파일 객체 반환
+                    file.write("question_end"+" "+result_word+"\n")      # 파일에 문자열 저장
+                    file.close()
+
+            for j in grammatical_recommend_end:
+                if j == i[len(i)-len(j):]:
+                    result_word = i                     
+                    file = codecs.open('./AIML_BOT/morpheme/recommend_end.txt', 'a','utf-8')    # hello.txt 파일을 쓰기 모드(w)로 열기. 파일 객체 반환
+                    file.write("recommend_end"+" "+result_word+"\n")      # 파일에 문자열 저장
+                    file.close()
+                                        
 
         second_third_aspect = ["난","넌"," 난 "," 넌 ","내"," 내 ","색깔","네 "," 네 ","<",">"]
         for i in second_third_aspect:
@@ -129,9 +175,10 @@ async def on_message(message):
 
 
 
-        josa = ["은 ","는 ","이 ","가 ","을 ","를 ","야 ","의 ","이야?"]
+        josa = ["은 ","는 ","이 ","가 ","을 ","를 ","야 ","의 ","이야?","이야"]
         for i in josa:
             #print(i)
+
             Client_sentence = Client_sentence.replace(i,' '+i)
             #print(Client_sentence)
 
@@ -251,6 +298,36 @@ async def on_message(message):
             else:
 
                 file = codecs.open('./AIML_BOT/standard/MisUnderstand_Sentence.txt', 'a','utf-8')    # hello.txt 파일을 쓰기 모드(w)로 열기. 파일 객체 반환
+                
+                josa = ["은 ","는 ","이 ","가 ","을 ","를 ","야 ","의 ","이야?","이야"]
+                for i in josa:
+                    Client_sentence = Client_sentence.replace(i,'*')
+            
+
+                finish_word = ["야","야?","?","니?","니","지","지?"]
+                for i in finish_word:
+                    if i == "야?" and Client_sentence[len(Client_sentence)-len("야?"):] == "야?":
+                        Client_sentence = Client_sentence.replace(i,'*')
+                
+                    if i == "야" and Client_sentence[len(Client_sentence)-len("야"):] == "야":
+                        Client_sentence = Client_sentence.replace(i,'*')
+                
+                    if i == "?" and Client_sentence[len(Client_sentence)-len("?"):] == "?":
+                        Client_sentence = Client_sentence.replace(i,'')
+               
+                    if i == "니?" and Client_sentence[len(Client_sentence)-len("니?"):] == "니?":
+                        Client_sentence = Client_sentence.replace(i,'*')
+               
+                    if i == "니" and Client_sentence[len(Client_sentence)-len("니"):] == "니":
+                        Client_sentence = Client_sentence.replace(i,'*')
+                          
+                    if i == "지?" and Client_sentence[len(Client_sentence)-len("지?"):] == "지?":
+                        Client_sentence = Client_sentence.replace(i,'*')
+                
+                    if i == "지" and Client_sentence[len(Client_sentence)-len("지"):] == "지":
+                        Client_sentence = Client_sentence.replace(i,'*')
+        
+                           
                 file.write(str(Sentence_Num)+" "+k.getPredicate("user_name",id)+" "+Client_sentence+"\n")      # 파일에 문자열 저장
                 file.close()                     # 파일 객체 닫기
                 await client.send_message(channel, "아직은 이해 할수 없는 말입니다. 하지만 데이터베이스에 기록하여 지능의 성장에 쓰도록 하겠습니다.")
