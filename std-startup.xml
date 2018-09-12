@@ -75,8 +75,20 @@
             <learn>./AIML_BOT/standard/Wind_bot_personality.aiml</learn>
             <learn>./AIML_BOT/standard/Wind_bot_date.aiml</learn>
             <learn>./AIML_BOT/standard/MisUnderstand_Answer_Sentence.aiml</learn>
+            <learn>./AIML_BOT/standard/sub_script_answer.aiml</learn>
            
            
         </template>
     </category>
+
+
+<category>
+        <pattern>LOAD AIML C</pattern>
+        <template>
+
+            <learn>./AIML_BOT/standard/MisUnderstand_Answer_Sentence.aiml</learn>
+                   
+        </template>
+    </category>
 </aiml>
+

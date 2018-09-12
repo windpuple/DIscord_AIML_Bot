@@ -1,2 +1,4 @@
 noun_verb 저
 noun_verb 식사
+noun_verb 없
+noun_verb 멍청

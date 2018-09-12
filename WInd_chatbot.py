@@ -7,6 +7,7 @@ import sys
 import os
 from discord.ext import commands
 import codecs
+import read_hangul_text
 
 client = discord.Client()
 
@@ -14,7 +15,7 @@ def main():
     client = discord.Client()
 
 
-BRAIN_FILE="./AIML_BOT/brain.dump"
+BRAIN_FILE="./AIML_BOT/brain/brain.dump"
 
 k = aiml.Kernel()
 
@@ -23,6 +24,11 @@ Learn_flag = 0
 Sentence_Num = 0
 target_Num = 0
 user_name = "initial"
+sub_upload = 0
+
+if sub_upload == 1:
+    read_sub = read_hangul_text.sub2aiml_sequence()
+    read_sub.sub2aiml('./AIML_BOT/hangul_text/Breathe20171080pBluRayx264-DRONES.smi','./AIML_BOT/hangul_text/Breathe20171080pBluRayx264-DRONES.txt')
 
 file = codecs.open('./AIML_BOT/Sentence_Num_Upkeep.cfg', 'r','utf-8')
 Sentence_Num = int(file.read())
@@ -47,8 +53,10 @@ file.close()
 #imsi dont use brain file
 print("Parsing aiml files")
 k.bootstrap(learnFiles="./AIML_BOT/std-startup.xml", commands="load aiml b")
-print("Saving brain file: " + BRAIN_FILE)
-k.saveBrain(BRAIN_FILE)
+
+#cant save over 5M aiml to brainfile
+#print("Saving brain file: " + BRAIN_FILE)
+#k.saveBrain(BRAIN_FILE)
 
 
 
@@ -299,33 +307,33 @@ async def on_message(message):
 
                 file = codecs.open('./AIML_BOT/standard/MisUnderstand_Sentence.txt', 'a','utf-8')    # hello.txt 파일을 쓰기 모드(w)로 열기. 파일 객체 반환
                 
-                josa = ["은 ","는 ","이 ","가 ","을 ","를 ","야 ","의 ","이야?","이야"]
+                josa = [" 은 "," 는 "," 이 "," 가 "," 을 "," 를 "," 야 "," 의 "," 이야?"," 이야"]
                 for i in josa:
-                    Client_sentence = Client_sentence.replace(i,'*')
+                    Client_sentence = Client_sentence.replace(i,' * ')
             
 
                 finish_word = ["야","야?","?","니?","니","지","지?"]
                 for i in finish_word:
                     if i == "야?" and Client_sentence[len(Client_sentence)-len("야?"):] == "야?":
-                        Client_sentence = Client_sentence.replace(i,'*')
+                        Client_sentence = Client_sentence.replace(i,' *')
                 
                     if i == "야" and Client_sentence[len(Client_sentence)-len("야"):] == "야":
-                        Client_sentence = Client_sentence.replace(i,'*')
+                        Client_sentence = Client_sentence.replace(i,' *')
                 
                     if i == "?" and Client_sentence[len(Client_sentence)-len("?"):] == "?":
                         Client_sentence = Client_sentence.replace(i,'')
                
                     if i == "니?" and Client_sentence[len(Client_sentence)-len("니?"):] == "니?":
-                        Client_sentence = Client_sentence.replace(i,'*')
+                        Client_sentence = Client_sentence.replace(i,' *')
                
                     if i == "니" and Client_sentence[len(Client_sentence)-len("니"):] == "니":
-                        Client_sentence = Client_sentence.replace(i,'*')
+                        Client_sentence = Client_sentence.replace(i,' *')
                           
                     if i == "지?" and Client_sentence[len(Client_sentence)-len("지?"):] == "지?":
-                        Client_sentence = Client_sentence.replace(i,'*')
+                        Client_sentence = Client_sentence.replace(i,' *')
                 
                     if i == "지" and Client_sentence[len(Client_sentence)-len("지"):] == "지":
-                        Client_sentence = Client_sentence.replace(i,'*')
+                        Client_sentence = Client_sentence.replace(i,' *')
         
                            
                 file.write(str(Sentence_Num)+" "+k.getPredicate("user_name",id)+" "+Client_sentence+"\n")      # 파일에 문자열 저장
@@ -444,7 +452,7 @@ async def on_message(message):
                                 './AIML_BOT/standard/MisUnderstand_Answer_Sentence.aiml', 'a', 'utf-8')
                             file.write("\n<category>\n")      # 파일에 문자열 저장
                             file.write("      <pattern>\n")
-                            file.write("            "+MisUnderstand_Sentence_line[target_Num_Count:])
+                            file.write("            "+MisUnderstand_Sentence_line[target_Num_Count:]+"\n")
                             file.write("      </pattern>\n")
                             file.write("            <template>\n")
                             file.write("            "+Client_sentence+"\n")
@@ -456,9 +464,10 @@ async def on_message(message):
                             await client.send_message(channel, "잠시만요. 기억하고 있어요.")
                             
                             print("Parsing aiml files")
-                            k.bootstrap(learnFiles="./AIML_BOT/std-startup.xml", commands="load aiml b")
-                            print("Saving brain file: " + BRAIN_FILE)
-                            k.saveBrain(BRAIN_FILE)
+                            k.bootstrap(learnFiles="./AIML_BOT/std-startup.xml", commands="load aiml c")
+                            #cant save over 5M aiml to brainfile
+                            #print("Saving brain file: " + BRAIN_FILE)
+                            #k.saveBrain(BRAIN_FILE)
                     loop = loop + 1
                 
                 file.close()                     # 파일 객체 닫기
