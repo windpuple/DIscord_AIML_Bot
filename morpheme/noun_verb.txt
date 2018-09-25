@@ -2,3 +2,6 @@ noun_verb 저
 noun_verb 식사
 noun_verb 없
 noun_verb 멍청
+noun_verb 배터리
+noun_verb 내
+noun_verb 내

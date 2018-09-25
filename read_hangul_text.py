@@ -11,7 +11,7 @@ class sub2aiml_sequence:
 
 
     @staticmethod
-    def sub2aiml(sub_file,target_file):
+    def sub2aiml(sub_file,target_file,saved_file):
 
         count = 0
 
@@ -21,7 +21,7 @@ class sub2aiml_sequence:
 
         for text_line in file:
 
-            if count < 27:
+            if count < 97:
                 pass
             else:
                     parse = re.sub('[-=.#/?:$}<>A-Za-z&;\'"]',
@@ -130,35 +130,68 @@ class sub2aiml_sequence:
                         #print("is this running? question ",question)
                         #print("is this running? answer ",answer)
 
-                        file = codecs.open(
-                            './AIML_BOT/standard/sub_script_answer.aiml', 'r', 'utf-8')
-                        sub_Answer_Sentence_line = file.read()
+                        if saved_file == 1:
+                            file = codecs.open(
+                                './AIML_BOT/standard/sub_script_answer_drama.aiml', 'r', 'utf-8')
 
-                        sub_Answer_Sentence_line = sub_Answer_Sentence_line.replace(
-                            '</aiml>', '')
+                            sub_Answer_Sentence_line = file.read()
 
-                        file.close()
+                            sub_Answer_Sentence_line = sub_Answer_Sentence_line.replace(
+                                '</aiml>', '')
 
-                        file = codecs.open(
-                            './AIML_BOT/standard/sub_script_answer.aiml', 'w', 'utf-8')
-                        file.write(sub_Answer_Sentence_line)
-                        file.close()
+                            file.close()
 
-                        file = codecs.open(
-                            './AIML_BOT/standard/sub_script_answer.aiml', 'a', 'utf-8')
-                        file.write("\n<category>\n")      # 파일에 문자열 저장
-                        file.write("      <pattern>\n")
-                        file.write("            "+question+"\n")
-                        file.write("      </pattern>\n")
-                        file.write("            <template>\n")
-                        file.write("            "+answer+"\n")
-                        file.write("            </template>\n")
-                        file.write("</category>\n\n")
-                        file.write("</aiml>\n")
-                        file.close()
+                            file = codecs.open(
+                                './AIML_BOT/standard/sub_script_answer_drama.aiml', 'w', 'utf-8')
+                            file.write(sub_Answer_Sentence_line)
+                            file.close()
 
-                        question = ""
-                        answer = ""
+                            file = codecs.open(
+                                './AIML_BOT/standard/sub_script_answer_drama.aiml', 'a', 'utf-8')
+                            file.write("\n<category>\n")      # 파일에 문자열 저장
+                            file.write("      <pattern>\n")
+                            file.write("            "+question+"\n")
+                            file.write("      </pattern>\n")
+                            file.write("            <template>\n")
+                            file.write("            "+answer+"\n")
+                            file.write("            </template>\n")
+                            file.write("</category>\n\n")
+                            file.write("</aiml>\n")
+                            file.close()
+
+                            question = ""
+                            answer = ""
+                        else:
+                            file = codecs.open(
+                                './AIML_BOT/standard/sub_script_answer.aiml', 'r', 'utf-8')
+                        
+                            sub_Answer_Sentence_line = file.read()
+
+                            sub_Answer_Sentence_line = sub_Answer_Sentence_line.replace(
+                                '</aiml>', '')
+
+                            file.close()
+
+                            file = codecs.open(
+                                './AIML_BOT/standard/sub_script_answer.aiml', 'w', 'utf-8')
+                            file.write(sub_Answer_Sentence_line)
+                            file.close()
+
+                            file = codecs.open(
+                                './AIML_BOT/standard/sub_script_answer.aiml', 'a', 'utf-8')
+                            file.write("\n<category>\n")      # 파일에 문자열 저장
+                            file.write("      <pattern>\n")
+                            file.write("            "+question+"\n")
+                            file.write("      </pattern>\n")
+                            file.write("            <template>\n")
+                            file.write("            "+answer+"\n")
+                            file.write("            </template>\n")
+                            file.write("</category>\n\n")
+                            file.write("</aiml>\n")
+                            file.close()
+
+                            question = ""
+                            answer = ""
 
                     
                 

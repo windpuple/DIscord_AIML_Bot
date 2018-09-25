@@ -789,4 +789,28 @@
             </template>
 </category>
 
+
+
+<category>
+      <pattern>
+            밤엔 어떻게
+
+      </pattern>
+            <template>
+            나 의 가 있잖아
+            </template>
+</category>
+
+
+
+<category>
+      <pattern>
+            밤엔 어떻해
+
+      </pattern>
+            <template>
+            나 의 가 있자나
+            </template>
+</category>
+
 </aiml>

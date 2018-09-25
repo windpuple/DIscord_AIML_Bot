@@ -24,11 +24,34 @@ Learn_flag = 0
 Sentence_Num = 0
 target_Num = 0
 user_name = "initial"
-sub_upload = 0
+sub_upload1 = 1
+sub_upload2 = 1
+sub_upload3 = 1
+sub_upload4 = 1
+sub_upload5 = 1
+select_file_drama = 1
 
-if sub_upload == 1:
+if sub_upload1== 1:
     read_sub = read_hangul_text.sub2aiml_sequence()
-    read_sub.sub2aiml('./AIML_BOT/hangul_text/Breathe20171080pBluRayx264-DRONES.smi','./AIML_BOT/hangul_text/Breathe20171080pBluRayx264-DRONES.txt')
+    read_sub.sub2aiml('./AIML_BOT/hangul_text/[JTBC] 순정에 반하다.E01.150403.HDTV.H264.720p-WITH.SMI','./AIML_BOT/[JTBC] 순정에 반하다.E01.150403.HDTV.H264.720p-WITH.txt',select_file_drama)
+
+if sub_upload2== 1:
+    read_sub = read_hangul_text.sub2aiml_sequence()
+    read_sub.sub2aiml('./AIML_BOT/hangul_text/[JTBC] 순정에 반하다.E02.150404.HDTV.H264.720p-WITH.SMI','./AIML_BOT/hangul_text/[JTBC] 순정에 반하다.E02.150404.HDTV.H264.720p-WITH.txt',select_file_drama)
+
+if sub_upload3== 1:
+    read_sub = read_hangul_text.sub2aiml_sequence()
+    read_sub.sub2aiml('./AIML_BOT/hangul_text/[JTBC] 순정에 반하다.E03.150410.HDTV.H264.720p-WITH.SMI','./AIML_BOT/hangul_text/[JTBC] 순정에 반하다.E03.150410.HDTV.H264.720p-WITH.txt',select_file_drama)
+
+if sub_upload4== 1:
+    read_sub = read_hangul_text.sub2aiml_sequence()
+    read_sub.sub2aiml('./AIML_BOT/hangul_text/[JTBC] 순정에 반하다.E04.150411.HDTV.H264.720p-WITH.SMI','./AIML_BOT/hangul_text/[JTBC] 순정에 반하다.E04.150411.HDTV.H264.720p-WITH.txt',select_file_drama)
+
+if sub_upload5== 1:
+    read_sub = read_hangul_text.sub2aiml_sequence()
+    read_sub.sub2aiml('./AIML_BOT/hangul_text/[JTBC] 순정에 반하다.E05.150417.HDTV.H264.720p-WITH.SMI','./AIML_BOT/hangul_text/[JTBC] 순정에 반하다.E05.150417.HDTV.H264.720p-WITH.txt',select_file_drama)
+
+
 
 file = codecs.open('./AIML_BOT/Sentence_Num_Upkeep.cfg', 'r','utf-8')
 Sentence_Num = int(file.read())
